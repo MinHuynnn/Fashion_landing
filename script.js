@@ -12,8 +12,6 @@
   const testimonialProgress = document.getElementById('testimonial-progress');
   const newsletterForm = document.getElementById('newsletter-form');
   const productsTrack = document.getElementById('products-track');
-  const productsPrev = document.getElementById('products-prev');
-  const productsNext = document.getElementById('products-next');
   const revealItems = Array.from(document.querySelectorAll('[data-reveal]'));
   const progressBar = document.getElementById('scroll-progress');
   const toast = document.getElementById('toast');
@@ -42,6 +40,13 @@
       en: 'Discover elegance and refinement in every new design from our latest collection.'
     },
     hero_cta: { vi: 'Khám Phá Ngay', en: 'Explore now' },
+    hero_cta_secondary: { vi: 'Xem lookbook', en: 'View lookbook' },
+    trust_shipping_title: { vi: 'Miễn phí giao hàng', en: 'Free shipping' },
+    trust_shipping_sub: { vi: 'Đơn từ 499k, 2-3 ngày nhận', en: 'Orders from 499k, 2-3 day delivery' },
+    trust_return_title: { vi: 'Đổi trả 30 ngày', en: '30-day returns' },
+    trust_return_sub: { vi: 'Nhận tư vấn kiểu dáng', en: 'Size/style advice on request' },
+    trust_hotline_title: { vi: 'Hotline 1800 6868', en: 'Hotline 1800 6868' },
+    trust_hotline_sub: { vi: '9:00 - 21:00 mỗi ngày', en: '9:00 - 21:00 daily' },
 
     products_heading: { vi: 'Sản phẩm nổi bật', en: 'Featured products' },
     products_body: {
@@ -68,14 +73,22 @@
     testimonials_heading: { vi: 'Khách hàng nói gì về chúng tôi?', en: 'What do our customers say?' },
     testimonials_cta: { vi: 'Xem tất cả đánh giá', en: 'View all reviews' },
 
-    newsletter_heading: { vi: 'Đăng ký nhận bản tin', en: 'Subscribe to our newsletter' },
+    newsletter_heading: { vi: 'Dang ky nhan ban tin', en: 'Subscribe to our newsletter' },
     newsletter_body: {
-      vi: 'Nhận thông tin cập nhật về sản phẩm mới và các chương trình khuyến mại đặc biệt.',
+      vi: 'Nhan thong tin cap nhat ve san pham moi va cac chuong trinh khuyen mai dac biet.',
       en: 'Get updates on new arrivals and exclusive promotions.'
     },
-    newsletter_button: { vi: 'Đăng ký', en: 'Subscribe' },
-    newsletter_placeholder: { vi: 'Nhập địa chỉ email của bạn', en: 'Enter your email address' },
-    newsletter_alert: { vi: 'Cảm ơn bạn đã đăng ký nhận bản tin!', en: 'Thanks for subscribing to our newsletter!' },
+    newsletter_button: { vi: 'Dang ky', en: 'Subscribe' },
+    newsletter_placeholder: { vi: 'Nhap dia chi email cua ban', en: 'Enter your email address' },
+    newsletter_alert: { vi: 'Cam on ban da dang ky nhan ban tin!', en: 'Thanks for subscribing to our newsletter!' },
+    quick_pick: { vi: 'Bo suu tap goi y', en: 'Editor pick' },
+    quick_desc: { vi: 'Thiet ke gioi han, chat lieu cao cap, giao nhanh 2-3 ngay.', en: 'Limited-run design, premium fabric, ships in 2-3 days.' },
+    quick_bullet_material: { vi: 'Chat lieu: Lua & satin', en: 'Fabric: Silk & satin' },
+    quick_bullet_fit: { vi: 'Phom: Relaxed fit', en: 'Fit: Relaxed fit' },
+    quick_bullet_warranty: { vi: 'Bao hanh: 12 thang', en: 'Warranty: 12 months' },
+    quick_bullet_exchange: { vi: 'Doi size: 30 ngay', en: 'Exchange: 30 days' },
+    quick_add: { vi: 'Them vao gio hang', en: 'Add to cart' },
+    quick_close: { vi: 'Dong', en: 'Close' },
 
     brand_tagline: {
       vi: 'Phong cách tối giản, sang trọng và hiện đại định hình nên vẻ đẹp vượt thời gian.',
@@ -213,10 +226,10 @@
 
   const openQuickView = (card) => {
     if (!quickView) return;
-    const name = card.querySelector('h3')?.textContent?.trim() ?? 'Sản phẩm';
+    const name = card.querySelector('h3')?.textContent?.trim() ?? 'San pham';
     const price = card.querySelector('p')?.textContent?.trim() ?? '';
     const image = extractBg(card.querySelector('.bg-cover'));
-    const desc = 'Thiết kế độc quyền, chất liệu cao cấp, giao trong 2-3 ngày.';
+    const desc = translations.quick_desc?.[currentLang] ?? translations.quick_desc?.vi ?? '';
     if (quickTitle) quickTitle.textContent = name;
     if (quickPrice) quickPrice.textContent = price;
     if (quickDesc) quickDesc.textContent = desc;
@@ -228,6 +241,7 @@
 
   quickviewCloseEls.forEach((el) => el.addEventListener('click', closeQuickView));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeQuickView(); });
+  quickView?.addEventListener('click', (e) => { if (e.target === quickView) closeQuickView(); });
 
   if (productsTrack) {
     const originals = Array.from(productsTrack.children);
@@ -339,8 +353,6 @@
         if (!isHovering && !isDragging) startAuto();
       }, 450);
     };
-    productsPrev?.addEventListener('click', () => manualScroll('left'));
-    productsNext?.addEventListener('click', () => manualScroll('right'));
 
     window.addEventListener('resize', normalize);
     setBehaviorAuto();
@@ -409,8 +421,9 @@
   startTestimonials();
 
   quickviewAdd?.addEventListener('click', () => {
-    const name = quickTitle?.textContent ?? 'Sản phẩm';
-    showToast(`Đã thêm ${name} vào giỏ hàng.`);
+    const name = quickTitle?.textContent ?? 'San pham';
+    const msg = currentLang === 'en' ? `Added ${name} to cart.` : `Da them ${name} vao gio hang.`;
+    showToast(msg);
     closeQuickView();
   });
 

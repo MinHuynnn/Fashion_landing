@@ -4,6 +4,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Crect width='64' height='64' rx='12' fill='%23F7F0E9'/%3E%3Cpath fill='%23C65D6A' d='M32 8 8 32l24 24 24-24-24-24zm0 10 14 14-14 14-14-14 14-14z'/%3E%3Cpath fill='%23D6A574' d='M32 22 22 32l10 10 10-10-10-10z'/%3E%3C/svg%3E"
+    />
     <title>Elegance - Vẻ đẹp vượt thời gian</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -177,13 +182,49 @@
           </div>
 
           <div class="mt-10" data-reveal>
-            <button
-              class="flex min-w-[84px] items-center justify-center rounded-full h-12 px-8 bg-hero-primary text-hero-text text-base font-bold transition-transform hover:scale-105 hover:bg-hero-accent hover:text-white shadow-xl shadow-hero-primary/30 active:scale-95"
-              data-scroll="products"
-              data-i18n="hero_cta"
-            >
-              Khám Phá Ngay
-            </button>
+            <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 justify-center">
+              <button
+                class="flex min-w-[84px] items-center justify-center rounded-full h-12 px-8 bg-hero-primary text-hero-text text-base font-bold transition-transform hover:scale-105 hover:bg-hero-accent hover:text-white shadow-xl shadow-hero-primary/30 active:scale-95"
+                data-scroll="products"
+                data-i18n="hero_cta"
+              >
+                Kham Pha Ngay
+              </button>
+              <a
+                class="flex min-w-[84px] items-center justify-center rounded-full h-12 px-8 border border-white/70 text-white text-base font-semibold transition-all hover:border-white hover:bg-white/10 backdrop-blur"
+                href="#collections"
+                data-i18n="hero_cta_secondary"
+              >
+                View lookbook
+              </a>
+            </div>
+          </div>
+        </div>
+      
+
+        <div class="absolute bottom-8 left-0 right-0 px-4" data-reveal>
+          <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+            <div class="flex items-center gap-3 bg-white/85 dark:bg-black/55 backdrop-blur-lg border border-white/60 dark:border-white/10 rounded-xl px-4 py-3 shadow-lg shadow-hero-primary/10">
+              <span class="material-symbols-outlined text-xl text-hero-primary">local_shipping</span>
+              <div class="text-left">
+                <p class="text-sm font-semibold text-brand-black dark:text-white" data-i18n="trust_shipping_title">Free shipping</p>
+                <p class="text-xs text-gray-700 dark:text-gray-300" data-i18n="trust_shipping_sub">Orders from 499k, 2-3 day delivery</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 bg-white/85 dark:bg-black/55 backdrop-blur-lg border border-white/60 dark:border-white/10 rounded-xl px-4 py-3 shadow-lg shadow-hero-primary/10">
+              <span class="material-symbols-outlined text-xl text-hero-primary">published_with_changes</span>
+              <div class="text-left">
+                <p class="text-sm font-semibold text-brand-black dark:text-white" data-i18n="trust_return_title">30-day returns</p>
+                <p class="text-xs text-gray-700 dark:text-gray-300" data-i18n="trust_return_sub">Size/style advice on request</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 bg-white/85 dark:bg-black/55 backdrop-blur-lg border border-white/60 dark:border-white/10 rounded-xl px-4 py-3 shadow-lg shadow-hero-primary/10">
+              <span class="material-symbols-outlined text-xl text-hero-primary">call</span>
+              <div class="text-left">
+                <p class="text-sm font-semibold text-brand-black dark:text-white" data-i18n="trust_hotline_title">Hotline 1800 6868</p>
+                <p class="text-xs text-gray-700 dark:text-gray-300" data-i18n="trust_hotline_sub">9:00 - 21:00 daily</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -314,15 +355,7 @@
                 </div>
               </article>
             </div>
-            <div class="flex justify-center gap-3 mt-6 md:mt-8">
-              <button id="products-prev" class="carousel-btn" aria-label="Xem trước">
-                <span class="material-symbols-outlined text-xl">arrow_back</span>
-              </button>
-              <button id="products-next" class="carousel-btn" aria-label="Xem tiếp">
-                <span class="material-symbols-outlined text-xl">arrow_forward</span>
-              </button>
-            </div>
-          </div>
+            
 
           <div class="mt-16 flex justify-center" data-reveal>
             <a
@@ -484,6 +517,18 @@
               Xem tất cả đánh giá
             </button>
           </div>
+          <div class="mt-12" data-reveal>
+            <div class="flex flex-col items-center gap-4">
+              <p class="text-sm uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400">Duoc nhac den tren</p>
+              <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+                <span class="press-chip">ELLE</span>
+                <span class="press-chip">Harper's</span>
+                <span class="press-chip">Vogue VN</span>
+                <span class="press-chip">Bazaar</span>
+                <span class="press-chip">DesignBoom</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -580,6 +625,53 @@
       </div>
     </footer>
 
+
+
+    <div
+      id="quick-view"
+      class="quickview hidden fixed inset-0 z-[80] items-center justify-center px-4 sm:px-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="quick-title"
+    >
+      <div class="quickview-backdrop" data-quickview-close></div>
+      <div class="quickview-panel relative w-full max-w-4xl bg-white dark:bg-[#0f0f10] rounded-2xl overflow-hidden shadow-2xl">
+        <button
+          class="absolute top-3 right-3 h-10 w-10 inline-flex items-center justify-center rounded-full bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-200 hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+          aria-label="Close"
+          data-quickview-close
+        >
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+        <div class="grid md:grid-cols-2">
+          <div class="bg-gray-100 dark:bg-gray-900 h-full">
+            <img id="quick-image" src="" alt="Product" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6 sm:p-8 space-y-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-promo-primary" data-i18n="quick_pick">Editor pick</p>
+            <h3 id="quick-title" class="text-2xl font-bold font-serif text-brand-black dark:text-white">Product</h3>
+            <p id="quick-price" class="text-lg font-semibold text-promo-primary">3.500.000?</p>
+            <p id="quick-desc" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="quick_desc">
+              Limited-run design, premium fabric, ships in 2-3 days.
+            </p>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div class="quick-bullet" data-i18n="quick_bullet_material">Fabric: Silk & satin</div>
+              <div class="quick-bullet" data-i18n="quick_bullet_fit">Fit: Relaxed fit</div>
+              <div class="quick-bullet" data-i18n="quick_bullet_warranty">Warranty: 12 months</div>
+              <div class="quick-bullet" data-i18n="quick_bullet_exchange">Exchange: 30 days</div>
+            </div>
+            <div class="flex gap-3 pt-2">
+              <button data-quickview-add class="flex-1 h-12 rounded-full bg-brand-black text-white font-semibold hover:bg-black transition-colors" data-i18n="quick_add">
+                Add to cart
+              </button>
+              <button data-quickview-close class="h-12 px-5 rounded-full border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800" data-i18n="quick_close">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
     <script src="script.js"></script>
