@@ -53,7 +53,7 @@
         }
       };
     </script>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-black/80 backdrop-blur-md shadow-sm glass-header">
@@ -410,34 +410,18 @@
               Khách hàng nói gì về chúng tôi?
             </h2>
 
-            <div class="flex gap-2">
-              <button
-                id="testimonial-prev"
-                class="h-10 w-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                aria-label="Xem trước"
-              >
-                <span class="material-symbols-outlined text-gray-600 dark:text-gray-300">arrow_back</span>
-              </button>
-              <button
-                id="testimonial-next"
-                class="h-10 w-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                aria-label="Xem tiếp"
-              >
-                <span class="material-symbols-outlined text-gray-600 dark:text-gray-300">arrow_forward</span>
-              </button>
-            </div>
-          </div>
+            
 
           <div class="relative" data-reveal>
             <div id="testimonial-track" class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 no-scrollbar">
-              <article class="flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-center" data-reveal>
-                <div class="h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center">
+              <article class="testimonial-item flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] max-w-[620px] snap-start" data-reveal>
+                <div class="testimonial-card relative h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md flex flex-col items-center text-center">
                   <div
                     class="w-20 h-20 rounded-full bg-cover bg-center mb-4 ring-2 ring-review-primary/20"
                     style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-lIYIQhnZipQsliEpnUyuLtMO81KbRb5bl3b7W6Sf9-wfnqvTs6SISTtwl86EWzWeH6oOR7MwHhM3q9WhkPBo7eW56j_C1LwUh-QyW1Cak0NHy0LogBZwiKVx95XWrm4u8maso3vz1i0trjWBeKtZaNkLMnZB09qVYd05eYSnx7Z5cwjVhpx7hbwcuh4Ha-msEEcWNekGjQte6UR3VhF4qwIaIwAxJ0UXNAOKKJ05x9XN8sT4vbaLpQGQh7ym4EyUoX1dPlP-KQ_g');"
                   ></div>
                   <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">Nguyễn An</h3>
-                  <div class="flex gap-1 text-review-primary my-2">
+                  <div class="testimonial-stars flex gap-1 text-review-primary my-2">
                     <span class="material-symbols-outlined fill text-base">star</span>
                     <span class="material-symbols-outlined fill text-base">star</span>
                     <span class="material-symbols-outlined fill text-base">star</span>
@@ -450,14 +434,14 @@
                 </div>
               </article>
 
-              <article class="flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-center" data-reveal>
-                <div class="h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center">
+              <article class="testimonial-item flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] max-w-[620px] snap-start" data-reveal>
+                <div class="testimonial-card relative h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md flex flex-col items-center text-center">
                   <div
                     class="w-20 h-20 rounded-full bg-cover bg-center mb-4 ring-2 ring-review-primary/20"
                     style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxqdpn_7IgtkMxacGSO4KNl7GLMx2k6ueUrXSbl-ItHYpjuQKFTmVzdo1q1b4XuDpk4S08Pn-PwU2_9sC4K9O7VloHrVzLw6OYjVYcrQPknIBNsLWOBU1tga9_OPA6aa6iqnmI6HSG6MITI113W_wcmUbKiAnrFQasm1p3Qk59hkmDy4BqG2Qqhk1xE5i8i6JO_i9nQpf84Fv6Ohm6WSJx4bwEKT63qk22tCrl5FYImnKVaieFgwrPAJjIiXVH2jgNUz7tUH9c4Dr1');"
                   ></div>
                   <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">Trần Bảo</h3>
-                  <div class="flex gap-1 text-review-primary my-2">
+                  <div class="testimonial-stars flex gap-1 text-review-primary my-2">
                     <span class="material-symbols-outlined fill text-base">star</span>
                     <span class="material-symbols-outlined fill text-base">star</span>
                     <span class="material-symbols-outlined fill text-base">star</span>
@@ -470,14 +454,14 @@
                 </div>
               </article>
 
-              <article class="flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-center" data-reveal>
-                <div class="h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center">
+              <article class="testimonial-item flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] max-w-[620px] snap-start" data-reveal>
+                <div class="testimonial-card relative h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md flex flex-col items-center text-center">
                   <div
                     class="w-20 h-20 rounded-full bg-cover bg-center mb-4 ring-2 ring-review-primary/20"
                     style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD06qQfHl_PzBgtESF_6C63Uk2VwFACDlNK1olLm0ZTzglXgCxRVTj7ka6ybqu3CK9MmGjuFTFG_g2t4DeLEWhmHOmzt9SmP75I70HMJr5rGdwZ_-7hhDa8NgLoQhogYAryC7Cp1tJccX_lyGOtK0VGl_bmq_IeeYMFrLT_1AoZdraRy9Jtg6vI1p0Znn2ujT3xVbeA55t8GEszh78GxhOZ_kTWBKphN11crjIF4e2fqfomkVtPr0fbaYF8k2pfrrfmwzUp7GwJH6jt');"
                   ></div>
                   <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">Lê Châu</h3>
-                  <div class="flex gap-1 text-review-primary my-2">
+                  <div class="testimonial-stars flex gap-1 text-review-primary my-2">
                     <span class="material-symbols-outlined fill text-base">star</span>
                     <span class="material-symbols-outlined fill text-base">star</span>
                     <span class="material-symbols-outlined fill text-base">star</span>
@@ -490,14 +474,14 @@
                 </div>
               </article>
 
-              <article class="flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-center" data-reveal>
-                <div class="h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center">
+              <article class="testimonial-item flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] max-w-[620px] snap-start" data-reveal>
+                <div class="testimonial-card relative h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md flex flex-col items-center text-center">
                   <div
                     class="w-20 h-20 rounded-full bg-cover bg-center mb-4 ring-2 ring-review-primary/20"
                     style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCoiMjqXAo0wLJh_mIsst25cs53kmRUNOOm0B9xAlfeqcWI79astBx__a0iw4YqzGGOA8Ze7pAv28nXnRaDLM5z77ZKrNGZ6zxCUoZLsORADjeTRV7M6x7uiJS3ysz9yHx1LBYQA8ThTKTNjYJ2uJmRWqN26OkfrGMtsc56kWjJTpvaSTnlHd5Vf-FYjhZHrR5_NYD5vcc_0BGvELRP7oonjhBnuMX4jgpLPpiwV0goTyPlbcl0cOYfbQMzIdJ3VvDm2abeRwiPi1jC');"
                   ></div>
                   <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">Phạm Minh</h3>
-                  <div class="flex gap-1 text-review-primary my-2">
+                  <div class="testimonial-stars flex gap-1 text-review-primary my-2">
                     <span class="material-symbols-outlined fill text-base">star</span>
                     <span class="material-symbols-outlined fill text-base">star</span>
                     <span class="material-symbols-outlined fill text-base">star</span>
@@ -509,7 +493,67 @@
                   </p>
                 </div>
               </article>
-            </div>
+            
+              <article class="testimonial-item flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] max-w-[620px] snap-start" data-reveal>
+                <div class="testimonial-card relative h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md flex flex-col items-center text-center">
+                  <div
+                    class="w-20 h-20 rounded-full bg-cover bg-center mb-4 ring-2 ring-review-primary/20"
+                    style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80');"
+                  ></div>
+                  <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">Mai Anh</h3>
+                  <div class="testimonial-stars flex gap-1 text-review-primary my-2">
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                  </div>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mt-2">
+                    "Chat lieu mem va dung chieu cao cap. Mau sac ngoai doi that dep hon mong doi."
+                  </p>
+                </div>
+              </article>
+
+              <article class="testimonial-item flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] max-w-[620px] snap-start" data-reveal>
+                <div class="testimonial-card relative h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md flex flex-col items-center text-center">
+                  <div
+                    class="w-20 h-20 rounded-full bg-cover bg-center mb-4 ring-2 ring-review-primary/20"
+                    style="background-image: url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=240&q=80');"
+                  ></div>
+                  <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">Thanh Ha</h3>
+                  <div class="testimonial-stars flex gap-1 text-review-primary my-2">
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                  </div>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mt-2">
+                    "Thiet ke tinh te, goi cam huong chau Au. Dich vu cham soc khach hang rat nhiet tinh."
+                  </p>
+                </div>
+              </article>
+
+              <article class="testimonial-item flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] max-w-[620px] snap-start" data-reveal>
+                <div class="testimonial-card relative h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md flex flex-col items-center text-center">
+                  <div
+                    class="w-20 h-20 rounded-full bg-cover bg-center mb-4 ring-2 ring-review-primary/20"
+                    style="background-image: url('https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=240&q=80');"
+                  ></div>
+                  <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">Duy Phuc</h3>
+                  <div class="testimonial-stars flex gap-1 text-review-primary my-2">
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                    <span class="material-symbols-outlined fill text-base">star</span>
+                  </div>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mt-2">
+                    "Giao hang rat nhanh, dong goi ky thuat. Phom chuan, khoat dang cao cap."
+                  </p>
+                </div>
+              </article>
+</div>
           </div>
 
           <div class="flex justify-center mt-8" data-reveal>
@@ -674,7 +718,7 @@
     </div>
     <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
-    <script src="script.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
   </body>
 </html>
 

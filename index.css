@@ -274,6 +274,68 @@ body {
   box-shadow: 0 0 0 4px rgba(74, 105, 226, 0.15);
 }
 
+.testimonial-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, border-color 0.35s ease;
+  opacity: 0.9;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.14);
+  opacity: 1;
+}
+
+.testimonial-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(226, 149, 160, 0) 0%, rgba(226, 149, 160, 0.1) 45%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+  transform: translateX(-15%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.testimonial-card:hover::after {
+  opacity: 1;
+  transform: translateX(15%);
+}
+
+.testimonial-stars span {
+  animation: star-pop 1s ease forwards;
+  transform-origin: center;
+}
+
+.testimonial-stars span:nth-child(1) { animation-delay: 0.0s; }
+.testimonial-stars span:nth-child(2) { animation-delay: 0.06s; }
+.testimonial-stars span:nth-child(3) { animation-delay: 0.12s; }
+.testimonial-stars span:nth-child(4) { animation-delay: 0.18s; }
+.testimonial-stars span:nth-child(5) { animation-delay: 0.24s; }
+
+@keyframes star-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  55% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+#testimonial-track {
+  cursor: grab;
+  scroll-behavior: smooth;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: pan-x;
+  scroll-padding-inline: 1.5rem;
+}
+
+#testimonial-track.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.testimonial-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
 .quickview {
   display: none;
 }
