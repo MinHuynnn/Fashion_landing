@@ -13,7 +13,7 @@
 }
 
 .product-card {
-  width: clamp(230px, 70vw, 280px);
+  width: clamp(220px, 68vw, 320px);
   flex: 0 0 auto;
 }
 
@@ -211,22 +211,22 @@
 }
 
 .hero-title {
-  font-size: clamp(2.6rem, 6vw + 1rem, 5.2rem);
-  line-height: 1.08;
+  font-size: clamp(2.8rem, 7vw + 1.1rem, 5.4rem);
+  line-height: 1.05;
 }
 
 .hero-sub {
-  font-size: clamp(1rem, 1vw + 0.9rem, 1.3rem);
-  max-width: clamp(22ch, 80vw, 34ch);
+  font-size: clamp(1.05rem, 1.2vw + 0.98rem, 1.45rem);
+  max-width: min(36ch, 88vw);
 }
 
 .hero-badge {
-  font-size: clamp(0.9rem, 0.6vw + 0.85rem, 1.1rem);
-  letter-spacing: clamp(0.16em, 0.5vw, 0.28em);
+  font-size: clamp(0.95rem, 0.9vw + 0.9rem, 1.15rem);
+  letter-spacing: clamp(0.18em, 0.55vw, 0.26em);
 }
 
 .hero-actions {
-  width: min(520px, 100%);
+  width: min(560px, 100%);
 }
 
 .hero-actions > * {
@@ -235,6 +235,12 @@
 
 .testimonial-item {
   max-width: min(92vw, 620px);
+}
+
+@media (min-width: 480px) {
+  .hero-actions {
+    gap: 0.75rem;
+  }
 }
 
 @media (max-width: 640px) {
