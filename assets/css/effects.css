@@ -1,0 +1,90 @@
+.hero-kenburns {
+  animation: kenburns 18s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.08) translate3d(6px, -6px, 0);
+  }
+}
+
+.hero-blob {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 999px;
+  filter: blur(80px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.hero-blob-1 {
+  top: -80px;
+  left: -60px;
+  background: radial-gradient(circle at 30% 30%, rgba(214, 165, 116, 0.82), transparent 60%);
+}
+
+.hero-blob-2 {
+  right: -80px;
+  bottom: -60px;
+  background: radial-gradient(circle at 60% 60%, rgba(224, 122, 122, 0.62), transparent 55%);
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.02) 35%, transparent 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.09) 0, transparent 50%, rgba(0, 0, 0, 0.06) 100%);
+  background-size: 180px 180px, 160px 160px;
+}
+
+.dark .hero-grain {
+  opacity: 0.14;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  filter: blur(6px);
+  transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.testimonial-stars span {
+  animation: star-pop 1s ease forwards;
+  transform-origin: center;
+}
+
+.testimonial-stars span:nth-child(1) { animation-delay: 0.0s; }
+.testimonial-stars span:nth-child(2) { animation-delay: 0.06s; }
+.testimonial-stars span:nth-child(3) { animation-delay: 0.12s; }
+.testimonial-stars span:nth-child(4) { animation-delay: 0.18s; }
+.testimonial-stars span:nth-child(5) { animation-delay: 0.24s; }
+
+@keyframes star-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  55% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes quickview-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
