@@ -46,6 +46,7 @@
       productsTrack.appendChild(clone);
     });
 
+    const isSmallScreen = () => window.matchMedia('(max-width: 768px)').matches;
     const attachTilt = () => {
       const cards = Array.from(productsTrack.querySelectorAll('.product-card'));
       cards.forEach((card) => {
@@ -54,6 +55,7 @@
           card.style.setProperty('--tilt-y', '0deg');
         };
         card.addEventListener('pointermove', (e) => {
+          if (e.pointerType === 'touch' || isSmallScreen()) { reset(); return; }
           const rect = card.getBoundingClientRect();
           const px = (e.clientX - rect.left) / rect.width - 0.5;
           const py = (e.clientY - rect.top) / rect.height - 0.5;
@@ -79,7 +81,11 @@
     let isDragging = false;
     let startX = 0;
     let startScrollLeft = 0;
+    let lastX = 0;
+    let lastTs = 0;
+    let velocity = 0;
     let rafId = null;
+    let momentumId = null;
     let lastTimestamp = null;
     const pixelsPerMs = 0.6;
     let heartbeatId = null;
@@ -87,6 +93,7 @@
 
     const setBehaviorAuto = () => { productsTrack.style.scrollBehavior = 'auto'; };
     const setBehaviorSmooth = () => { productsTrack.style.scrollBehavior = 'smooth'; };
+    const stopMomentum = () => { if (momentumId) cancelAnimationFrame(momentumId); momentumId = null; };
     const stopAuto = () => { if (rafId) cancelAnimationFrame(rafId); rafId = null; lastTimestamp = null; };
     const autoStep = (ts) => {
       if (!lastTimestamp) lastTimestamp = ts;
@@ -96,10 +103,10 @@
       normalize();
       rafId = requestAnimationFrame(autoStep);
     };
-    const startAuto = () => { if (!rafId && !isHovering && !isDragging) rafId = requestAnimationFrame(autoStep); };
+    const startAuto = () => { if (!rafId && !isHovering && !isDragging && !momentumId) rafId = requestAnimationFrame(autoStep); };
     const fallbackStep = Math.max(6, pixelsPerMs * 16);
     const fallbackTick = () => {
-      if (rafId || isHovering || isDragging) return;
+      if (rafId || isHovering || isDragging || momentumId) return;
       productsTrack.scrollLeft += fallbackStep;
       normalize();
     };
@@ -108,9 +115,14 @@
     const handlePointerDown = (e) => {
       isDragging = true;
       startX = e.pageX;
+      lastX = e.pageX;
+      lastTs = performance.now();
+      velocity = 0;
       startScrollLeft = productsTrack.scrollLeft;
       stopAuto();
+      stopMomentum();
       setBehaviorAuto();
+      productsTrack.style.scrollSnapType = 'none';
       productsTrack.classList.add('dragging');
       productsTrack.setPointerCapture?.(e.pointerId);
     };
@@ -119,14 +131,38 @@
       const delta = startX - e.pageX;
       productsTrack.scrollLeft = startScrollLeft + delta;
       normalize();
+      const now = performance.now();
+      const dx = lastX - e.pageX;
+      const dt = now - lastTs || 1;
+      velocity = dx / dt;
+      lastX = e.pageX;
+      lastTs = now;
     };
+    const startMomentum = () => {
+      stopMomentum();
+      const friction = 0.92;
+      const step = () => {
+        velocity *= friction;
+        if (Math.abs(velocity) < 0.02) {
+          stopMomentum();
+          productsTrack.style.scrollSnapType = 'x mandatory';
+          if (!isHovering && !isDragging) startAuto();
+          return;
+        }
+        productsTrack.scrollLeft += velocity * 16;
+        normalize();
+        momentumId = requestAnimationFrame(step);
+      };
+      momentumId = requestAnimationFrame(step);
+    };
+
     const handlePointerUp = (e) => {
       if (!isDragging) return;
       isDragging = false;
       productsTrack.classList.remove('dragging');
       productsTrack.releasePointerCapture?.(e.pointerId);
       setBehaviorAuto();
-      if (!isHovering) startAuto();
+      startMomentum();
     };
 
     productsTrack.addEventListener('pointerdown', (e) => { if (e.pointerType === 'mouse') e.preventDefault(); handlePointerDown(e); });

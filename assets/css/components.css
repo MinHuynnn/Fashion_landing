@@ -12,6 +12,11 @@
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
 }
 
+.product-card {
+  width: clamp(230px, 70vw, 280px);
+  flex: 0 0 auto;
+}
+
 .product-carousel {
   display: flex;
   gap: 1.5rem;
@@ -22,7 +27,8 @@
   cursor: grab;
   user-select: none;
   -webkit-user-drag: none;
-  touch-action: pan-y;
+  /* Prefer horizontal swipe on mobile, still allow pinch-zoom */
+  touch-action: pan-x pinch-zoom;
 }
 
 .product-carousel.dragging {
@@ -190,7 +196,7 @@
   scroll-behavior: smooth;
   user-select: none;
   -webkit-user-drag: none;
-  touch-action: pan-x;
+  touch-action: pan-x pinch-zoom;
   scroll-padding-inline: 1.5rem;
 }
 
@@ -204,66 +210,39 @@
   scroll-snap-align: start;
 }
 
-.quickview {
-  display: none;
+.hero-title {
+  font-size: clamp(2.6rem, 6vw + 1rem, 5.2rem);
+  line-height: 1.08;
 }
 
-.quickview.show {
-  display: flex;
-  animation: quickview-fade 0.25s ease;
+.hero-sub {
+  font-size: clamp(1rem, 1vw + 0.9rem, 1.3rem);
+  max-width: clamp(22ch, 80vw, 34ch);
 }
 
-.quickview-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(6px);
+.hero-badge {
+  font-size: clamp(0.9rem, 0.6vw + 0.85rem, 1.1rem);
+  letter-spacing: clamp(0.16em, 0.5vw, 0.28em);
 }
 
-.quickview-panel {
-  transform: translateY(10px);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+.hero-actions {
+  width: min(520px, 100%);
 }
 
-.quickview.show .quickview-panel {
-  transform: translateY(0);
-  opacity: 1;
+.hero-actions > * {
+  width: 100%;
 }
 
-.quick-bullet {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+.testimonial-item {
+  max-width: min(92vw, 620px);
 }
 
-.dark .quick-bullet {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.press-chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.03);
-  color: #1f2937;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.dark .press-chip {
-  background: rgba(255, 255, 255, 0.04);
-  color: #f8fafc;
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35);
+@media (max-width: 640px) {
+  .product-carousel {
+    padding-inline: 0.35rem;
+    gap: 1.15rem;
+  }
+  #testimonial-track {
+    scroll-padding-inline: 0.75rem;
+  }
 }
