@@ -73,6 +73,54 @@
   testimonialTrack?.addEventListener('mouseenter', stopTestimonials);
   testimonialTrack?.addEventListener('mouseleave', startTestimonials);
 
+  const testimonialForm = document.getElementById('testimonial-form');
+  const testimonialNameInput = document.getElementById('testimonial-name');
+  const testimonialMessageInput = document.getElementById('testimonial-message');
+
+  const buildTestimonialCard = (name, message) => {
+    const article = document.createElement('article');
+    article.className = 'testimonial-item flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] max-w-[620px] snap-start';
+    article.innerHTML = `
+      <div class="testimonial-card relative h-full bg-white dark:bg-[#3c2a2f] p-8 rounded-2xl shadow-sm hover:shadow-md flex flex-col items-center text-center">
+        <div class="w-20 h-20 rounded-full bg-center bg-cover mb-4 ring-2 ring-review-primary/20"
+             style="background-image: url('https://images.unsplash.com/photo-1521572153540-262f4e95a07c?auto=format&fit=crop&w=160&q=80');"></div>
+        <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">${name}</h3>
+        <div class="testimonial-stars flex gap-1 text-review-primary my-2">
+          <span class="material-symbols-outlined fill text-base">star</span>
+          <span class="material-symbols-outlined fill text-base">star</span>
+          <span class="material-symbols-outlined fill text-base">star</span>
+          <span class="material-symbols-outlined fill text-base">star</span>
+          <span class="material-symbols-outlined fill text-base">star</span>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mt-2">"${message}"</p>
+      </div>`;
+    return article;
+  };
+
+  const appendTestimonial = (article) => {
+    if (!testimonialTrack) return;
+    const clones = Array.from(testimonialTrack.querySelectorAll('.testimonial-item.is-visible'));
+    const firstClone = clones[0];
+    if (firstClone) testimonialTrack.insertBefore(article, firstClone);
+    else testimonialTrack.appendChild(article);
+    const clone = article.cloneNode(true);
+    clone.classList.add('is-visible');
+    if (clones.length) clones[clones.length - 1].after(clone);
+    else testimonialTrack.appendChild(clone);
+    normalizeTestimonials?.();
+  };
+
+  testimonialForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = testimonialNameInput?.value.trim() || 'Khách hàng';
+    const message = testimonialMessageInput?.value.trim() || 'Sản phẩm rất tốt!';
+    const card = buildTestimonialCard(name, message);
+    appendTestimonial(card);
+    testimonialForm.reset();
+    stopTestimonials();
+    startTestimonials();
+  });
+
   if (testimonialTrack) {
     const tOriginals = Array.from(testimonialTrack.children);
     tOriginals.forEach((item) => {

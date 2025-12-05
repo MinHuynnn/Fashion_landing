@@ -1,9 +1,18 @@
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   font-family: "Be Vietnam Pro", sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .material-symbols-outlined {
