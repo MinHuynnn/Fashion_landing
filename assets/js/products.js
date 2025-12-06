@@ -100,14 +100,20 @@
       normalize();
       rafId = requestAnimationFrame(autoStep);
     };
-    const startAuto = () => { if (!rafId && !isHovering && !isDragging && !momentumId) rafId = requestAnimationFrame(autoStep); };
+    const startAuto = () => {
+      if (isSmallScreen()) { stopAuto(); return; }
+      if (!rafId && !isHovering && !isDragging && !momentumId) rafId = requestAnimationFrame(autoStep);
+    };
     const fallbackStep = Math.max(6, pixelsPerMs * 16);
     const fallbackTick = () => {
       if (rafId || isHovering || isDragging || momentumId) return;
       productsTrack.scrollLeft += fallbackStep;
       normalize();
     };
-    const startFallback = () => { if (!fallbackId) fallbackId = setInterval(fallbackTick, 32); };
+    const startFallback = () => {
+      if (isSmallScreen()) { if (fallbackId) clearInterval(fallbackId); fallbackId = null; return; }
+      if (!fallbackId) fallbackId = setInterval(fallbackTick, 32);
+    };
 
     const handlePointerDown = (e) => {
       isDragging = true;
@@ -162,7 +168,7 @@
       startMomentum();
     };
 
-    productsTrack.addEventListener('pointerdown', (e) => { if (e.pointerType === 'mouse') e.preventDefault(); handlePointerDown(e); });
+    productsTrack.addEventListener('pointerdown', (e) => { handlePointerDown(e); });
     productsTrack.addEventListener('pointermove', handlePointerMove);
     productsTrack.addEventListener('pointerup', handlePointerUp);
     productsTrack.addEventListener('pointercancel', handlePointerUp);
@@ -276,7 +282,11 @@
       }, 450);
     };
 
-    window.addEventListener('resize', normalize);
+    window.addEventListener('resize', () => {
+      normalize();
+      if (isSmallScreen()) { stopAuto(); if (fallbackId) { clearInterval(fallbackId); fallbackId = null; } }
+      else { startAuto(); startFallback(); }
+    });
     setBehaviorAuto();
     productsTrack.scrollLeft = Math.max(1, halfWidth() * 0.25);
     startAuto();

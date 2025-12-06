@@ -1,6 +1,7 @@
 .hero-kenburns {
   animation: kenburns 18s ease-in-out infinite alternate;
   transform-origin: center;
+  object-position: center center;
 }
 
 @keyframes kenburns {

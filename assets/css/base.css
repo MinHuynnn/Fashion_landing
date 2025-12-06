@@ -8,11 +8,16 @@ body {
   font-family: "Be Vietnam Pro", sans-serif;
   width: 100%;
   overflow-x: hidden;
+  background-color: #f5eee7;
 }
 
 main {
   width: 100%;
   overflow-x: hidden;
+}
+
+:root {
+  --header-h: 80px;
 }
 
 .material-symbols-outlined {
@@ -30,6 +35,10 @@ main {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.max-w-7xl {
+  max-width: 1680px;
 }
 
 .glass-header {

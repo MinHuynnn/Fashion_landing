@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   const ns = (window.Elegance = window.Elegance || {});
   ns.el = {
     html: document.documentElement,
@@ -43,9 +43,9 @@
     hero_cta: { vi: 'Khám Phá Ngay', en: 'Explore now' },
     hero_cta_secondary: { vi: 'Xem lookbook', en: 'View lookbook' },
     trust_shipping_title: { vi: 'Miễn phí giao hàng', en: 'Free shipping' },
-    trust_shipping_sub: { vi: 'Đơn từ 499k, 2-3 ngày nhận', en: 'Orders from 499k, 2-3 day delivery' },
+    trust_shipping_sub: { vi: 'Đơn từ 499k, nhận sau 2-3 ngày', en: 'Orders from 499k, 2-3 day delivery' },
     trust_return_title: { vi: 'Đổi trả 30 ngày', en: '30-day returns' },
-    trust_return_sub: { vi: 'Nhận tư vấn kiểu dáng', en: 'Size/style advice on request' },
+    trust_return_sub: { vi: 'Nhận tư vấn size/kiểu dáng', en: 'Size/style advice on request' },
     trust_hotline_title: { vi: 'Hotline 1800 6868', en: 'Hotline 1800 6868' },
     trust_hotline_sub: { vi: '9:00 - 21:00 mỗi ngày', en: '9:00 - 21:00 daily' },
 
@@ -76,7 +76,7 @@
 
     newsletter_heading: { vi: 'Đăng ký nhận bản tin', en: 'Subscribe to our newsletter' },
     newsletter_body: {
-      vi: 'Nhận thông tin cập nhật về sản phẩm mới và các chương trình khuyến mại đặc biệt.',
+      vi: 'Nhận thông tin cập nhật về sản phẩm mới và các chương trình khuyến mãi đặc biệt.',
       en: 'Get updates on new arrivals and exclusive promotions.'
     },
     newsletter_button: { vi: 'Đăng ký', en: 'Subscribe' },
@@ -111,7 +111,7 @@
     policy_privacy: { vi: 'Chính sách bảo mật', en: 'Privacy policy' },
     policy_terms: { vi: 'Điều khoản dịch vụ', en: 'Terms of service' },
 
-    rights: { vi: '© 2024 Elegance Fashion. All rights reserved.', en: '© 2024 Elegance Fashion. All rights reserved.' },
+    rights: { vi: '© 2024 Elegance Fashion. Đã đăng ký bản quyền.', en: '© 2024 Elegance Fashion. All rights reserved.' },
     footer_language: { vi: 'Tiếng Việt', en: 'English' }
   };
 
